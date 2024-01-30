@@ -23,7 +23,7 @@ const Card = ({ card, onDelete }) => {
           <p className="text-sm text-gray-500 mb-2">
           <span className="font-bold uppercase">Created Date:</span> {card.createdDate}
           </p>
-          <button type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br  shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">JOb Done</button>
+          <button type="button" className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br  shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">JOb Done</button>
         </div>
       </div>
     </>

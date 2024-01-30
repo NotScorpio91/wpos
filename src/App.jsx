@@ -1,14 +1,23 @@
-import React from 'react';
-import CardForm from './components/CardForm';
-import CardList from './components/CardList';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import {
+    Home,
+    CardForm
+    
+} from './index'
 
 function App() {
-  return (
-    <div className="App my-20">
-      <CardForm />
-      <CardList />
-    </div>
-  );
+    return (
+        <div>
+            <Router>
+                <Routes>
+                    <Route path="" element={<Home />} />
+                    <Route path="/card-form" element={<CardForm />} />
+                    
+                </Routes>
+            </Router>
+        </div>
+    )
 }
 
-export default App;
+export default App
