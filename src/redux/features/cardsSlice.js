@@ -1,16 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = JSON.parse(localStorage.getItem('cards')) || [];
+
 export const cardsSlice = createSlice({
   name: 'cards',
-  initialState: [],
+  initialState,
   reducers: {
     addCard: (state, action) => {
       state.push(action.payload);
+      localStorage.setItem('cards', JSON.stringify(state));
     },
     deleteCard: (state, action) => {
-      return state.filter(card => card.id !== action.payload.id);
+      const updatedState = state.filter(card => card.id !== action.payload.id);
+      localStorage.setItem('cards', JSON.stringify(updatedState));
+      return updatedState;
     },
-    deleteAllCards: (state) => {
+    deleteAllCards: () => {
+      localStorage.removeItem('cards');
       return [];
     },
   },

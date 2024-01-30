@@ -11,7 +11,7 @@ const CardForm = () => {
     clientName: '',
     title: '',
     description: '',
-    price: 0, 
+    price: '',
     dueDate: '',
     createdDate: '', 
     image: '',
@@ -32,7 +32,7 @@ const CardForm = () => {
       formData.clientName &&
       formData.title &&
       formData.description &&
-      formData.price >= 0 && 
+      formData.price &&
       formData.dueDate &&
       formData.createdDate &&
       formData.image
@@ -47,7 +47,7 @@ const CardForm = () => {
         clientName: '',
         title: '',
         description: '',
-        price: 0,
+        price: '',
         dueDate: '',
         createdDate: formattedDate,
         image: '',
@@ -60,9 +60,7 @@ const CardForm = () => {
     }
   };
 
-  const handleDeleteAll = () => {
-    dispatch(deleteAllCards());
-  };
+
 
   useEffect(() => {
     
@@ -86,18 +84,8 @@ const CardForm = () => {
       </div>
         
       )}
+      
       <div className='mb-4 flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4'>
-      <div className="flex-grow md:w-1/6">
-        <label className="block text-white mb-1">Client Name</label>
-        <input
-          type="text"
-          name="clientName"
-          value={formData.clientName}
-          onChange={handleInputChange}
-          required
-          className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
-        />
-      </div>
       <div className="flex-grow md:w-1/6">
         <label className="block text-white mb-1">Title</label>
         <input
@@ -110,6 +98,18 @@ const CardForm = () => {
         />
       </div>
       <div className="flex-grow md:w-1/6">
+        <label className="block text-white mb-1">Client Name</label>
+        <input
+          type="text"
+          name="clientName"
+          value={formData.clientName}
+          onChange={handleInputChange}
+          required
+          className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
+        />
+      </div>
+      
+      <div className="flex-grow md:w-1/6">
         <label className="block text-white mb-1">Description</label>
         <input
           type="text"
@@ -121,19 +121,15 @@ const CardForm = () => {
         />
       </div>
       <div className="flex-grow md:w-1/6">
-        <label className="block text-white mb-1">Price: ${formData.price}</label>
+        <label className="block text-white mb-1">Price</label>
         <input
-          type="range"
+          type="number"
           name="price"
           value={formData.price}
           onChange={handleInputChange}
-          min="0"
-          max="1000"
-          step="1"
           required
-          className="w-full border rounded-md py-1 focus:outline-none focus:border-blue-500"
+          className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
         />
-        
       </div>
       <div className="flex-grow md:w-1/6">
         <label className="block text-white mb-1">Due Date</label>
@@ -144,18 +140,6 @@ const CardForm = () => {
           onChange={handleInputChange}
           required
           className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
-        />
-      </div>
-      <div className="flex-grow md:w-1/6">
-        <label className="block text-white mb-1">Created Date</label>
-        <input
-          type="text"
-          name="createdDate"
-          value={formData.createdDate}
-          onChange={handleInputChange}
-          readOnly 
-          required
-          className="w-full border rounded-md py-1 px-2 bg-gray-100"
         />
       </div>
       <div className="flex-grow md:w-1/6">
@@ -172,11 +156,7 @@ const CardForm = () => {
       <div className="">
         <button onClick={handleSubmit} type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br    shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">Add Card</button>
       </div>
-      {cards.length > 0 && (
-        <div className="px-0 md:px-4">
-          <button onClick={handleDeleteAll}  type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br  shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Delete All Cards</button>
-        </div>
-      )}
+      
       </div>
     </div>
   );
