@@ -72,9 +72,10 @@ const CardForm = () => {
   }, []);
 
   return (
-    <div className=" px-4">
+    <div className=" px-4 mt-12">
+      <h1 className='text-center  my-16 text-5xl text-neutral-100'>Wpos</h1>
       {errorMessage && (
-        <div class="flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+        <div class="flex w-fit  items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50  dark:text-blue-400 transition-all sm:absolute sm:top-24" role="alert">
         <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
           <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
         </svg>
@@ -165,15 +166,11 @@ const CardForm = () => {
       </div>
       <div className='flex justify-between md:justify-start pt-2 pb-5 '>
       <div className="">
-        <button onClick={handleSubmit} className="bg-blue-500 text-white py-2 px-4 rounded-md focus:outline-none hover:bg-blue-700">
-          Add Card
-        </button>
+        <button onClick={handleSubmit} type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br    shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">Add Card</button>
       </div>
       {cards.length > 0 && (
         <div className="px-0 md:px-4">
-          <button onClick={handleDeleteAll} className="bg-red-500 text-white py-2 px-4 rounded-md focus:outline-none hover:bg-red-700">
-            Delete All Cards
-          </button>
+          <button onClick={handleDeleteAll}  type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br  shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Delete All Cards</button>
         </div>
       )}
       </div>

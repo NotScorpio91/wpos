@@ -4,7 +4,7 @@ import CardList from './components/CardList';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App my-20">
       <CardForm />
       <CardList />
     </div>
