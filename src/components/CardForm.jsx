@@ -11,7 +11,7 @@ const CardForm = () => {
     clientName: '',
     title: '',
     description: '',
-    price: '',
+    price: 0, 
     dueDate: '',
     createdDate: '', 
     image: '',
@@ -32,7 +32,7 @@ const CardForm = () => {
       formData.clientName &&
       formData.title &&
       formData.description &&
-      formData.price &&
+      formData.price >= 0 && 
       formData.dueDate &&
       formData.createdDate &&
       formData.image
@@ -47,7 +47,7 @@ const CardForm = () => {
         clientName: '',
         title: '',
         description: '',
-        price: '',
+        price: 0,
         dueDate: '',
         createdDate: formattedDate,
         image: '',
@@ -88,7 +88,7 @@ const CardForm = () => {
       )}
       <div className='mb-4 flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4'>
       <div className="flex-grow md:w-1/6">
-        <label className="block text-black mb-1">Client Name</label>
+        <label className="block text-white mb-1">Client Name</label>
         <input
           type="text"
           name="clientName"
@@ -99,7 +99,7 @@ const CardForm = () => {
         />
       </div>
       <div className="flex-grow md:w-1/6">
-        <label className="block text-black mb-1">Title</label>
+        <label className="block text-white mb-1">Title</label>
         <input
           type="text"
           name="title"
@@ -110,7 +110,7 @@ const CardForm = () => {
         />
       </div>
       <div className="flex-grow md:w-1/6">
-        <label className="block text-black mb-1">Description</label>
+        <label className="block text-white mb-1">Description</label>
         <input
           type="text"
           name="description"
@@ -121,18 +121,22 @@ const CardForm = () => {
         />
       </div>
       <div className="flex-grow md:w-1/6">
-        <label className="block text-black mb-1">Price</label>
+        <label className="block text-white mb-1">Price: ${formData.price}</label>
         <input
-          type="text"
+          type="range"
           name="price"
           value={formData.price}
           onChange={handleInputChange}
+          min="0"
+          max="1000"
+          step="1"
           required
-          className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
+          className="w-full border rounded-md py-1 focus:outline-none focus:border-blue-500"
         />
+        
       </div>
       <div className="flex-grow md:w-1/6">
-        <label className="block text-black mb-1">Due Date</label>
+        <label className="block text-white mb-1">Due Date</label>
         <input
           type="date"
           name="dueDate"
@@ -143,7 +147,7 @@ const CardForm = () => {
         />
       </div>
       <div className="flex-grow md:w-1/6">
-        <label className="block text-black mb-1">Created Date</label>
+        <label className="block text-white mb-1">Created Date</label>
         <input
           type="text"
           name="createdDate"
@@ -155,7 +159,7 @@ const CardForm = () => {
         />
       </div>
       <div className="flex-grow md:w-1/6">
-        <label className="block text-black mb-1">Image</label>
+        <label className="block text-white mb-1">Image</label>
         <input
           type="file"
           onChange={handleFileChange}
