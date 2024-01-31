@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Tab from './components/Tab';
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
             Go to Form
           </button>
         </Link>
+        <Tab />
       </div>
     </div>
   );
