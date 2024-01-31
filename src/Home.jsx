@@ -4,7 +4,7 @@ import Tab from './components/Tab';
 
 const Home = () => {
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex mt-14 flex-col items-center h-screen">
       <div className="flex flex-col items-center">
         <h1 className="text-4xl text-black font-bold mb-8">Wpos</h1>
         <Link to="/card-form">
@@ -12,8 +12,8 @@ const Home = () => {
             Go to Form
           </button>
         </Link>
-        <Tab />
       </div>
+        <Tab />
     </div>
   );
 };

@@ -1,34 +1,42 @@
 import React, { useState } from 'react';
+import CardList from './CardList'
+import { MdOutlineWorkOff } from "react-icons/md";
+import { MdOutlineWorkOutline } from "react-icons/md";
+
 
 const Tab = () => {
   const [activeTab, setActiveTab] = useState('ncj');
 
   return (
-    <div className="container mx-auto mt-8 ">
-      <div className="flex space-x-4 border-b  ">
+    <div className=" mx-auto mt-8  ">
+      <div className="flex justify-center space-x-4    ">
         <div
-          className={`cursor-pointer      ${
-            activeTab === 'ncj' ? 'text-blue-500 border- border-4 border-blue-500 ' : ''
+          className={`cursor-pointer  border-white text-white      ${
+            activeTab === 'ncj' ? 'text-blue-500 border-blue-500  border-b-2 font-semibold ' : ''
           }`}
           onClick={() => setActiveTab('ncj')}
         >
-          NCJ
+          <MdOutlineWorkOff className={`cursor-pointer  border-white text-white    ${
+            activeTab === 'ncj' ? 'text-blue-500 border-blue-500  border-b-2 font-semibold ' : ''
+          }`}  />NCJ
         </div>
         <div
-          className={`cursor-pointer   ${
-            activeTab === 'sec_cj' ? 'bg-blue-500 text-white' : ''
+          className={`cursor-pointer  border-white text-white    ${
+            activeTab === 'sec_cj' ? 'text-blue-500 border-blue-500  border-b-2 font-semibold ' : ''
           }`}
           onClick={() => setActiveTab('sec_cj')}
         >
-          SEC CJ
+           <MdOutlineWorkOutline className={`cursor-pointer  border-white text-white    ${
+            activeTab === 'sec_cj' ? 'text-blue-500 border-blue-500  border-b-2 font-semibold ' : ''
+          }`}  />SEC CJ
         </div>
       </div>
 
-      <div className="mt-4 p-4 border border-gray-300 rounded-bl-lg rounded-br-lg">
+      <div className="bg-red-800 mt-2 ">
         {activeTab === 'ncj' && (
           <div>
             {/* Content for NCJ tab */}
-            <h2>NCJ Content Goes Here</h2>
+            <CardList />
           </div>
         )}
 
