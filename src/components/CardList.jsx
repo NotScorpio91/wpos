@@ -18,7 +18,7 @@ const CardList = () => {
   };
 
   return (
-    <div className='grid sm:grid-cols- px-4 w-hit '>
+    <div className='grid sm:grid-cols- px-4  '>
       {cards.map(card => (
         <Card key={card.id} card={card} onDelete={() => handleDelete(card)} />
       ))}

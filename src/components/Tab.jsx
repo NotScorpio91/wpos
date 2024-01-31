@@ -32,7 +32,7 @@ const Tab = () => {
         </div>
       </div>
 
-      <div className="bg-red-800 mt-2 ">
+      <div className=" mt-2 ">
         {activeTab === 'ncj' && (
           <div>
             {/* Content for NCJ tab */}
@@ -43,7 +43,7 @@ const Tab = () => {
         {activeTab === 'sec_cj' && (
           <div>
             {/* Content for SEC CJ tab */}
-            <h2>SEC CJ Content Goes Here</h2>
+            <h2 className='text-center'>SEC CJ Content Goes Here</h2>
           </div>
         )}
       </div>

@@ -7,9 +7,9 @@ const Card = ({ card, onDelete }) => {
       <div className="max-w-sm h-fit  border border-gray-200 rounded-lg  bg-neutral-50  shadow-2xl shadow-gray-600/10 dark:shadow-none my-5 md:mx-5 ">
         
           <CiBookmarkMinus onClick={() => onDelete(card)} className=" md:absolute hidden md:block  mt-2 text-red-700 z-50" size={30} />
-          <CiBookmarkMinus onClick={() => onDelete(card)} className=" block md:hidden absolute right-6  mt-2 text-red-700 z-50" size={30} />
+          <CiBookmarkMinus onClick={() => onDelete(card)} className=" block md:hidden absolute right-  mt-2 text-red-700 z-50" size={30} />
 
-          <img className="rounded-t-lg h-[324px] w-full" src={card.image} alt="Card"  />
+          <img className="rounded-t-lg  w-full" src={card.image} alt="Card"  />
            
         
         <div className="p-5">
