@@ -32,7 +32,7 @@ const Tab = () => {
         </div>
       </div>
 
-      <div className=" mt-2 ">
+      <div className=" mt-2 flex justify-center items-center ">
         {activeTab === 'ncj' && (
           <div>
             {/* Content for NCJ tab */}

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCard } from '../redux/features/cardsSlice';
-import { deleteAllCards } from '../redux/features/cardsSlice';
-import { Link } from 'react-router-dom';
+// import { deleteAllCards } from '../redux/features/cardsSlice';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 
 const CardForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const cards = useSelector(state => state.cards);
   const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
@@ -25,9 +28,19 @@ const CardForm = () => {
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, image: URL.createObjectURL(e.target.files[0]) });
+    const file = e.target.files[0];
+    
+    if (file) {
+      const reader = new FileReader();
+  
+      reader.onloadend = () => {
+        setFormData({ ...formData, image: reader.result });
+      };
+  
+      reader.readAsDataURL(file);
+    }
   };
-
+  
   const handleSubmit = () => {
 
     if (
@@ -54,6 +67,8 @@ const CardForm = () => {
         createdDate: formattedDate,
         image: '',
       });
+      navigate('/'); 
+      window.scrollTo(0, 0);
     } else {
       setErrorMessage('All fields are required');
       setTimeout(() => {
