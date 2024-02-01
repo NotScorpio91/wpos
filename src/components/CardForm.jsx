@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCard } from '../redux/features/cardsSlice';
 // import { deleteAllCards } from '../redux/features/cardsSlice';
-import { Link, useNavigate } from 'react-router-dom';
-
-
+import { useNavigate } from 'react-router-dom';
 
 const CardForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const cards = useSelector(state => state.cards);
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     clientName: '',
@@ -28,19 +25,9 @@ const CardForm = () => {
   };
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    
-    if (file) {
-      const reader = new FileReader();
-  
-      reader.onloadend = () => {
-        setFormData({ ...formData, image: reader.result });
-      };
-  
-      reader.readAsDataURL(file);
-    }
+    setFormData({ ...formData, image: URL.createObjectURL(e.target.files[0]) });
   };
-  
+
   const handleSubmit = () => {
 
     if (
@@ -67,8 +54,7 @@ const CardForm = () => {
         createdDate: formattedDate,
         image: '',
       });
-      navigate('/'); 
-      window.scrollTo(0, 0);
+      navigate('/');
     } else {
       setErrorMessage('All fields are required');
       setTimeout(() => {
@@ -76,7 +62,9 @@ const CardForm = () => {
       }, 2000);
     }
   };
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
 
   useEffect(() => {
@@ -88,7 +76,7 @@ const CardForm = () => {
 
   return (
     <div className=" px-4 mt-12">
-      <Link to='/' ><button type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Back</button></Link>
+      <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Back</button>
       <h1 className='text-center  my-16 text-5xl text-neutral-100'>Wpos</h1>
       {errorMessage && (
         <div className="flex w-fit  items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50  dark:text-blue-400 transition-all sm:absolute sm:top-24" role="alert">
