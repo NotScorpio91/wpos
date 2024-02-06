@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteCard } from '../redux/features/cardsSlice';
+import { deleteCard } from '../redux/slices/cardsSlice';
 import Card from './Card';
 
 const CardList = () => {

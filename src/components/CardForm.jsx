@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCard } from '../redux/features/cardsSlice';
+import { addCard } from '../redux/slices/cardsSlice';
 // import { deleteAllCards } from '../redux/features/cardsSlice';
 import { useNavigate } from 'react-router-dom';
 
