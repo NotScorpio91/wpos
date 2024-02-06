@@ -17,6 +17,7 @@ const CardForm = () => {
     dueDate: '',
     createdDate: '', 
     image: '',
+    status:0
   });
 
   const handleInputChange = (e) => {

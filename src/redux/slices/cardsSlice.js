@@ -5,17 +5,22 @@ const initialState = {
 
 export const cardsSlice = createSlice({
   name: 'cards',
-  initialState: [],
+  initialState: initialState,
   reducers: {
     addCard: (state, action) => {
-      state.push(action.payload);
+      state.posts = [
+        ...state.posts,
+        action.payload
+      ];
+      console.log(state);
     },
     deleteCard: (state, action) => {
-      return state.filter(card => card.id !== action.payload.id);
+      return state.posts.filter(card => card.id !== action.payload.id);
     },
     deleteAllCards: (state) => {
-      return [];
+      return state.posts = [];
     },
+  
   },
 });
 

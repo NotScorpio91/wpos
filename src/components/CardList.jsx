@@ -1,10 +1,10 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteCard } from '../redux/slices/cardsSlice';
 import Card from './Card';
 
-const CardList = () => {
-  const cards = useSelector(state => state.cardSlice);
+const CardList = ({list}) => {
+  // const cards = useSelector(state => state.cardSlice);
   const dispatch = useDispatch();
 
   const handleDelete = card => {
@@ -15,7 +15,7 @@ const CardList = () => {
 
   return (
     <div className='grid sm:grid-cols-2 sm:space-x-4 md:flex-col md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 px-4 justify-center items-center '>
-      {cards.map(card => (
+      {list?.map(card => (
         <Card key={card.id} card={card} onDelete={() => handleDelete(card)} />
       ))}
     
