@@ -4,7 +4,7 @@ import { deleteCard } from '../redux/slices/cardsSlice';
 import Card from './Card';
 
 const CardList = () => {
-  const cards = useSelector(state => state.cards);
+  const cards = useSelector(state => state.cardSlice);
   const dispatch = useDispatch();
 
   const handleDelete = card => {

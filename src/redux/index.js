@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import cards from './slices/cardsSlice';
+import cardSlice from './slices/cardsSlice';
 
 
 export default combineReducers({
-    cards,
+    cardSlice,
     
 });
