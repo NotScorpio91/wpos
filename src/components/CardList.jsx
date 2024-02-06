@@ -14,7 +14,7 @@ const CardList = () => {
 
 
   return (
-    <div className='grid sm:grid-cols-4 px-4 '>
+    <div className='grid sm:grid-cols-2 sm:space-x-4 md:flex-col md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 px-4 justify-center items-center '>
       {cards.map(card => (
         <Card key={card.id} card={card} onDelete={() => handleDelete(card)} />
       ))}
