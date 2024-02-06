@@ -66,7 +66,7 @@ const Tab = () => {
         {activeTab === "ncj" && (
           <div>
             {/* Content for NCJ tab */}
-            <CardList list={list1} />
+            <CardList list={list1}  />
           </div>
         )}
 

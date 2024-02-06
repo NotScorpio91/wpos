@@ -15,15 +15,21 @@ export const cardsSlice = createSlice({
       console.log(state);
     },
     deleteCard: (state, action) => {
-      return state.posts.filter(card => card.id !== action.payload.id);
+       state.posts = state.posts.filter(card => card.id !== action.payload.id);
     },
     deleteAllCards: (state) => {
-      return state.posts = [];
+       state.posts = [];
     },
-  
+    updatePost: (state, action) => {
+      const index = state.posts.findIndex(card => card.id === action.payload);
+      if (index !== -1) {
+        state.posts[index].status = 1;
+      }
+
+    }
   },
 });
 
-export const { addCard, deleteCard, deleteAllCards } = cardsSlice.actions;
+export const { addCard, deleteCard, deleteAllCards,updatePost } = cardsSlice.actions;
 
 export default cardsSlice.reducer;

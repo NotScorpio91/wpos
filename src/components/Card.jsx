@@ -1,10 +1,15 @@
 import React from "react";
 import { CiBookmarkMinus } from "react-icons/ci";
+import { useDispatch } from "react-redux";
+import { updatePost } from "../redux/slices/cardsSlice";
+import { FaCheckCircle } from "react-icons/fa";
 
 const Card = ({ card, onDelete }) => {
-  const handleJobDone = () => {
-    console.log("Job Done button clicked for card:", card);
-    // onDelete(card);
+
+  const dispatch = useDispatch();
+
+  const handleUpdatePost = () => {
+    dispatch(updatePost(card.id));
   };
   return (
     <>
@@ -43,13 +48,11 @@ const Card = ({ card, onDelete }) => {
             <span className="font-bold uppercase">Created Date:</span>{" "}
             {card.createdDate}
           </p>
-          <button
-            type="button"
-            onClick={handleJobDone}
-            className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br  shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-          >
-            JOb Done
-          </button>
+          {card.status === 0 ? (
+          <button className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br  shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={handleUpdatePost}>Job Done</button>
+      ) : (
+        <FaCheckCircle />
+      )}
         </div>
       </div>
     </>
