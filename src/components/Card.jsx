@@ -19,11 +19,7 @@ const Card = ({ card, onDelete }) => {
           className=" md:absolute hidden md:block  mt-2 text-red-700 z-50"
           size={30}
         />
-        <CiBookmarkMinus
-          onClick={() => onDelete(card)}
-          className=" block md:hidden absolute   mt-2 text-red-700 z-50"
-          size={30}
-        />
+      
 
         <img
           className="rounded-t-lg h-[324px] w-full"

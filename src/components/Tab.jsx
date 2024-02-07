@@ -38,7 +38,6 @@ const Tab = () => {
         ...doc.data(),
         id: doc.id,
       }));
-      console.log(filteredData);
       dispatch(storeCards(filteredData));
     } catch (err) {
       console.error(err);
