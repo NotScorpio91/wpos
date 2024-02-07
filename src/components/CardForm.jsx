@@ -15,7 +15,7 @@ const CardForm = () => {
   const dispatch = useDispatch();
   const cards = useSelector(state => state.cards);
   const navigate = useNavigate();
-  const CollectionRef = collection(db, "cards");
+  const collectionRef = collection(db, "cards");
 
   const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
@@ -64,13 +64,14 @@ const CardForm = () => {
         createdDate: formattedDate,
         image: '',
       });
-        addDoc(CollectionRef, {
+        addDoc(collectionRef, {
         title: formData.title,
         clientName: formData.clientName,
         description: formData.description,
         price: formData.price,
         dueDate: formData.dueDate,
         createdDate: formData.createdDate, 
+        status:0
 
       });
       navigate('/');

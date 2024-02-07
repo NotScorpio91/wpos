@@ -2,10 +2,18 @@ import React, { useEffect, useState } from "react";
 import CardList from "./CardList";
 import { MdOutlineWorkOff } from "react-icons/md";
 import { MdOutlineWorkOutline } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {storeCards} from "../redux/slices/cardsSlice";
+import { db } from "../config/firebase";
+import {
+  getDocs,
+  doc,
+  collection,
+} from "firebase/firestore";
 
 const Tab = () => {
   const [activeTab, setActiveTab] = useState("ncj");
+  const dispatch = useDispatch();
   const [list1, setList1] = useState([]);
   const [list2, setList2] = useState([]);
 
@@ -21,6 +29,26 @@ const Tab = () => {
 
   }, [posts]);
   
+  const collectionRef = collection(db, "cards");
+
+  const getList = async () => {
+    try {
+      const data = await getDocs(collectionRef);
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      console.log(filteredData);
+      dispatch(storeCards(filteredData));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getList();
+  }, []);
+
 
   return (
     <div className=" mx-auto mt-8  ">

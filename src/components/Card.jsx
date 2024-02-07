@@ -7,7 +7,6 @@ import { FaCheckCircle } from "react-icons/fa";
 const Card = ({ card, onDelete }) => {
 
   const dispatch = useDispatch();
-  console.log(card);
 
   const handleUpdatePost = () => {
     dispatch(updatePost(card.id));

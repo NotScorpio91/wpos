@@ -1,16 +1,16 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteCard } from '../redux/slices/cardsSlice';
 import Card from './Card';
 
 const CardList = ({list}) => {
-  // const cards = useSelector(state => state.cardSlice);
+  
   const dispatch = useDispatch();
-
   const handleDelete = card => {
     dispatch(deleteCard(card));
   };
 
+ 
 
 
   return (
