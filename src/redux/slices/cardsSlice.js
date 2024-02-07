@@ -12,7 +12,6 @@ export const cardsSlice = createSlice({
         ...state.posts,
         action.payload
       ];
-      console.log(state);
     },
     deleteCard: (state, action) => {
        state.posts = state.posts.filter(card => card.id !== action.payload.id);

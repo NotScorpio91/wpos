@@ -19,7 +19,6 @@ const Tab = () => {
     setList1(l1)
     setList2(l2)
 
-    console.log(posts);
   }, [posts]);
   
 

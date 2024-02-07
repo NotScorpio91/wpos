@@ -3,11 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addCard } from '../redux/slices/cardsSlice';
 // import { deleteAllCards } from '../redux/features/cardsSlice';
 import { useNavigate } from 'react-router-dom';
+import {db} from '../config/firebase'
+import {
+  collection,
+  addDoc,
+} from "firebase/firestore";
+
+
 
 const CardForm = () => {
   const dispatch = useDispatch();
   const cards = useSelector(state => state.cards);
   const navigate = useNavigate();
+  const CollectionRef = collection(db, "cards");
+
   const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     clientName: '',
@@ -55,6 +64,15 @@ const CardForm = () => {
         createdDate: formattedDate,
         image: '',
       });
+        addDoc(CollectionRef, {
+        title: formData.title,
+        clientName: formData.clientName,
+        description: formData.description,
+        price: formData.price,
+        dueDate: formData.dueDate,
+        createdDate: formData.createdDate, 
+
+      });
       navigate('/');
     } else {
       setErrorMessage('All fields are required');
@@ -74,6 +92,7 @@ const CardForm = () => {
     const formattedDate = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(currentDate.getDate()).padStart(2, '0')}`;
     setFormData({ ...formData, createdDate: formattedDate });
   }, []);
+
 
   return (
     <div className=" px-4 mt-12">
