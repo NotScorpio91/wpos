@@ -15,12 +15,13 @@ const CardList = ({list}) => {
   const dispatch = useDispatch();
 
   const Delete = card => {
-    dispatch(deleteCard(card));
   };
   
   const collectionRef = collection(db, "cards");
 
   const handleDelete = async (id) => {
+    dispatch(deleteCard(id));
+
     const cardDoc = doc(db, "cards", id);
     await deleteDoc(cardDoc);
   };
