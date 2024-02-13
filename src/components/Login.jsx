@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { setUser } from '../redux/slices/cardsSlice';
+import { useDispatch } from 'react-redux';
 import { auth, googleProvider } from "../config/firebase";
 import {
   signInWithPopup,
@@ -8,6 +10,7 @@ import {
 function Login() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -27,6 +30,7 @@ function Login() {
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
+      dispatch(setUser(user));
     } catch (err) {
       console.error(err);
     }

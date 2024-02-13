@@ -4,12 +4,15 @@ import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useDispatch } from 'react-redux';
+import { setUser } from '../redux/slices/cardsSlice';
 
 
 function Navabr() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
 
   const toggleDropdown = () => {
@@ -34,6 +37,7 @@ function Navabr() {
     try {
       await signOut(auth);
       navigate("/");
+      dispatch(setUser(null));
     } catch (err) {
       console.error(err);
     }
