@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { auth, googleProvider } from "../config/firebase";
 import {
   signInWithPopup,
@@ -6,6 +6,21 @@ import {
 } from "firebase/auth";
 
 function Login() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        setUser(user);
+      } else {
+        // No user is signed in.
+        setUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const signInWithGoogle = async () => {
     try {
@@ -25,8 +40,15 @@ function Login() {
 
   return (
     <div>
-      <button type="button" onClick={signInWithGoogle} > SignIn With Google</button>
-      <button onClick={logout}>logout</button>
+      {user ? (
+        <>
+          <p>Welcome, {user.displayName}!</p>
+          <img src={user.photoURL} alt="Profile" />
+          <button onClick={logout}>Sign Out</button>
+        </>
+      ) : (
+        <button onClick={signInWithGoogle}>Sign In with Google</button>
+      )}
     </div>
   );
 }
