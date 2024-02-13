@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { auth, googleProvider } from "../config/firebase";
 import {
   signInWithPopup,
-  signOut,
 } from "firebase/auth";
 
 function Login() {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         // User is signed in.
         setUser(user);
+        navigate("/home");
       } else {
         // No user is signed in.
         setUser(null);
@@ -30,25 +32,11 @@ function Login() {
     }
   };
 
-  const logout = async () => {
-    try {
-      await signOut(auth);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+ 
 
   return (
     <div>
-      {user ? (
-        <>
-          <p>Welcome, {user.displayName}!</p>
-          <img src={user.photoURL} alt="Profile" />
-          <button onClick={logout}>Sign Out</button>
-        </>
-      ) : (
         <button onClick={signInWithGoogle}>Sign In with Google</button>
-      )}
     </div>
   );
 }
