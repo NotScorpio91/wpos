@@ -99,7 +99,8 @@ const CardForm = () => {
   }, []);
 
   return (
-    <div className=" px-4 mt-12">
+    <div className=" xl:flex xl:justify-center xl:items-center  ">
+    <div className=" px-4 mt-12 ">
       <button
         onClick={() => navigate("/")}
         type="button"
@@ -128,9 +129,8 @@ const CardForm = () => {
           </div>
         </div>
       )}
-
-      <div className="mb-4 flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
-        <div className="flex-grow md:w-1/6">
+      <div className="mb-4 flex flex-col  gap-4 lg:space-y-0 xl:grid xl:grid-cols-2 xl:w-[1200px] xl:gap-5  2xl:grid 2xl:grid-cols-1 ">
+        <div className="flex-grow ">
           <label className="block text-white mb-1">Title</label>
           <input
             type="text"
@@ -141,7 +141,7 @@ const CardForm = () => {
             className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
           />
         </div>
-        <div className="flex-grow md:w-1/6">
+        <div className="flex-grow ">
           <label className="block text-white mb-1">Client Name</label>
           <input
             type="text"
@@ -153,7 +153,7 @@ const CardForm = () => {
           />
         </div>
 
-        <div className="flex-grow md:w-1/6">
+        <div className="flex-grow ">
           <label className="block text-white mb-1">Description</label>
           <input
             type="text"
@@ -164,7 +164,7 @@ const CardForm = () => {
             className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
           />
         </div>
-        <div className="flex-grow md:w-1/6">
+        <div className="flex-grow ">
           <label className="block text-white mb-1">Price</label>
           <input
             type="number"
@@ -175,7 +175,7 @@ const CardForm = () => {
             className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
           />
         </div>
-        <div className="flex-grow md:w-1/6">
+        <div className="flex-grow ">
           <label className="block text-white mb-1">Due Date</label>
           <input
             type="date"
@@ -186,7 +186,7 @@ const CardForm = () => {
             className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
           />
         </div>
-        <div className="flex-grow md:w-1/6">
+        <div className="flex-grow ">
           <label className="block text-white mb-1">Image</label>
           <input
             type="file"
@@ -196,6 +196,7 @@ const CardForm = () => {
           />
         </div>
       </div>
+     
       <div className="flex justify-between md:justify-start pt-2 pb-5 ">
         <div className="">
           <button
@@ -207,6 +208,7 @@ const CardForm = () => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
