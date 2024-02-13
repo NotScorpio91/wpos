@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
-  posts: []
+  posts: [],
+  user: null,
+  isAuthenticated: false,
 };
 
 export const cardsSlice = createSlice({
@@ -29,10 +31,14 @@ export const cardsSlice = createSlice({
         state.posts[index].status = 1;
       }
 
-    }
+    },
+    setUser: (state, action) => {
+      state.user = action.payload;
+      state.isAuthenticated = action.payload ? true : false;
+    },
   },
 });
 
-export const { addCard, deleteCard, deleteAllCards,updatePost,storeCards } = cardsSlice.actions;
+export const { addCard, deleteCard, deleteAllCards,updatePost,storeCards,setUser } = cardsSlice.actions;
 
 export default cardsSlice.reducer;
