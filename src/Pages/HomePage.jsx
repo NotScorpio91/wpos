@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../components/Button';
 import Tab from '../components/Tab';
-import Navbar from '../components/Navabr';
+import Navbar from '../components/Navbar';
 import { auth } from '../config/firebase';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
