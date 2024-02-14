@@ -2,9 +2,30 @@ import React from 'react';
 import Button from '../components/Button';
 import Tab from '../components/Tab';
 import Navbar from '../components/Navabr';
+import { auth } from '../config/firebase';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        navigate("/home");
+      } else {
+        // No user is signed in.
+        navigate("/");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
     <>
     <Navbar />
