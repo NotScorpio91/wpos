@@ -36,9 +36,13 @@ export const cardsSlice = createSlice({
       state.user = action.payload;
       state.isAuthenticated = action.payload ? true : false;
     },
+    logout: (state) => {
+      state.user = null;
+      state.isAuthenticated = false;
+    },
   },
 });
 
-export const { addCard, deleteCard, deleteAllCards,updatePost,storeCards,setUser } = cardsSlice.actions;
+export const { addCard, deleteCard, deleteAllCards,updatePost,storeCards,setUser,logout } = cardsSlice.actions;
 
 export default cardsSlice.reducer;

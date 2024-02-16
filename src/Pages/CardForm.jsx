@@ -6,12 +6,29 @@ import { useNavigate } from "react-router-dom";
 import { db, storage } from "../config/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
+import { auth } from '../config/firebase';
+
+
 
 const CardForm = () => {
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.cards);
   const navigate = useNavigate();
   const collectionRef = collection(db, "cards");
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        navigate("/card-form");
+      } else {
+        // No user is signed in.
+        navigate("/");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({

@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/slices/cardsSlice';
 
 
-function Navabr() {
+function Navbar() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -106,4 +106,4 @@ function Navabr() {
   );
 }
 
-export default Navabr;
+export default Navbar;
