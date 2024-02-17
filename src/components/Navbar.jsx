@@ -1,23 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { auth } from "../config/firebase";
-import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/slices/cardsSlice';
 
 
 function Navbar() {
-  const [dropdownVisible, setDropdownVisible] = useState(false);
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
 
-  const toggleDropdown = () => {
-    setDropdownVisible(!dropdownVisible);
-  };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -33,56 +22,17 @@ function Navbar() {
     return () => unsubscribe();
   }, []);
 
-  const logout = async () => {
-    try {
-      await signOut(auth);
-      navigate("/");
-      dispatch(setUser(null));
-    } catch (err) {
-      console.error(err);
-    }
-  };
+
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 ">
      
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
+      <div className="max-w-screen-xl flex flex-wrap items-center md:justify-between justify-center mx-auto p-4">
+        <Link to='/home' className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Wpos
           </span>
-        </a>
-        {user ? (
-        <>
-          <div className="flex items-center justify-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse gap-2">
-            <img
-              src={user.photoURL}
-              alt="Profile"
-              className="w-8 h-8 rounded-full border"
-            />
-            <div className="text-white">{user.displayName}</div>
-            <IoMdArrowDropdown
-              className={`text-white transition-all ${
-                dropdownVisible ? "rotate-180" : "rotate-0"
-              }`}
-              onClick={toggleDropdown}
-            />
-            <div
-              className={`mt-2 absolute top-12  bg-gray-500 rounded-sm  ${
-                dropdownVisible ? "block" : "hidden"
-              }`}
-            >
-              <div
-                className="block p-2 cursor-pointer hover:bg-gray-200"
-                onClick={logout}
-              >
-                Logout
-              </div>
-            </div>
-          </div>
-        </>
-      ) : (
-        <></>
-      )}
+        </Link>
+       
         <div
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-language"
