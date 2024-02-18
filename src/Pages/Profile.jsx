@@ -31,6 +31,7 @@ function Profile() {
         } else {
           // No user is signed in.
           setUser(null);
+          navigate('/');
         }
       });
   

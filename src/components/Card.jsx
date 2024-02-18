@@ -12,8 +12,8 @@ const Card = ({ card, onDelete }) => {
     dispatch(updatePost(card.id));
   };
   return (
-    <>
-      <div className="max-w-sm h-fit  border border-gray-200 rounded-lg  bg-neutral-50  shadow-2xl shadow-gray-600/10 dark:shadow-none my-5 md:mx-5 ">
+
+      <div className="md:max-w-sm w-full  h-fit  border border-gray-200 rounded-lg  bg-neutral-50  shadow-2xl shadow-gray-600/10 dark:shadow-none my-5 md:mx-5 ">
         <CiBookmarkMinus
           onClick={() => onDelete(card)}
           className=" md:absolute hidden md:block  mt-2 text-red-700 z-50"
@@ -51,7 +51,7 @@ const Card = ({ card, onDelete }) => {
       )}
         </div>
       </div>
-    </>
+    
   );
 };
 

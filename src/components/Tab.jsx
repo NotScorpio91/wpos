@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import CardList from "./CardList";
-import { MdOutlineWorkOff } from "react-icons/md";
-import { MdOutlineWorkOutline } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
-import {storeCards} from "../redux/slices/cardsSlice";
+import { BiTaskX } from "react-icons/bi";
+import { BiTask } from "react-icons/bi";
+import { storeCards } from "../redux/slices/cardsSlice";
 import { db } from "../config/firebase";
 import {
   getDocs,
@@ -28,7 +28,7 @@ const Tab = () => {
     setList2(l2)
 
   }, [posts]);
-  
+
   const collectionRef = collection(db, "cards");
 
   const getList = async () => {
@@ -50,56 +50,43 @@ const Tab = () => {
 
 
   return (
-    <div className=" mx-auto mt-8  ">
-      <div className="flex justify-center space-x-4    ">
+    <div className=" flex justify-center items-center flex-col px-2 py-16 sm:px-0 font-poppins ">
+      <div className="flex justify-around items-center space-x-1 rounded-xl bg-[#0A0A0A] p-1 w-full ">
         <div
-          className={`cursor-pointer  border-white text-white      ${
-            activeTab === "ncj"
-              ? "text-blue-500 border-blue-500  border-b-2 font-semibold "
-              : ""
-          }`}
+          className={`w-full rounded-lg py-3 text-sm font-medium leading-5 text-white flex justify-center items-center   gap-1 cursor-pointer  ${activeTab === "ncj"
+              ? "bg-[#131415] shadow  outline-none"
+              : "hover:bg-[#131415] hover:text-white"
+            }`}
           onClick={() => setActiveTab("ncj")}
         >
-          <MdOutlineWorkOff
-            className={`cursor-pointer  border-white text-white    ${
-              activeTab === "ncj"
-                ? "text-blue-500 border-blue-500  border-b-2 font-semibold "
-                : ""
-            }`}
-          />
-          NCJ
+          Task
+          <BiTaskX
+            size={18} />
         </div>
         <div
-          className={`cursor-pointer  border-white text-white    ${
-            activeTab === "sec_cj"
-              ? "text-blue-500 border-blue-500  border-b-2 font-semibold "
-              : ""
-          }`}
+          className={`w-full rounded-lg py-3 text-sm font-medium leading-5 text-white flex justify-center items-center  gap-1  cursor-pointer ${activeTab === "sec_cj"
+              ? "bg-[#131415] shadow  outline-none"
+              : "hover:bg-[#131415] hover:text-white"
+            }`}
           onClick={() => setActiveTab("sec_cj")}
         >
-          <MdOutlineWorkOutline
-            className={`cursor-pointer  border-white text-white    ${
-              activeTab === "sec_cj"
-                ? "text-blue-500 border-blue-500   border-b-2 font-semibold "
-                : " text-red-300"
-            }`}
-          />
-          SEC CJ
+          Done
+          <BiTask
+            size={18} />
         </div>
       </div>
 
-      <div className=" mt-2 ">
+      <div className=" mt-2 bg-[#0A0A0A] w-full rounded-lg ">
         {activeTab === "ncj" && (
           <div>
             {/* Content for NCJ tab */}
-            <CardList list={list1}  />
+            <CardList list={list1} />
           </div>
         )}
 
         {activeTab === "sec_cj" && (
           <div>
             {/* Content for SEC CJ tab */}
-            <h2 className="text-center">SEC CJ Content Goes Here</h2>
             <CardList list={list2} />
           </div>
         )}

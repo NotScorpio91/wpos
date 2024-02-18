@@ -29,11 +29,11 @@ const Home = () => {
     backgroundImage: `url(${bg})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    height: '100vh', 
+    height: '90vh', 
   };
 
   return (
-    <div style={backgroundImageStyle} className='flex flex-col justify-center items-center  text-white' >
+    <div style={backgroundImageStyle} className='flex flex-col justify-center items-center  text-white h-fit' >
       <h1 className='text-center text-6xl font-bold bg-gradient-to-tl from-[#fc4a1a] to-[#f7b733] text-transparent bg-clip-text antialiased pb-40'>Wpos</h1>
          <Login />
     </div>
