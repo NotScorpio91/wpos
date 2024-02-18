@@ -26,6 +26,7 @@ function Profile() {
         if (user) {
           // User is signed in.
           setUser(user);
+          navigate('/profile');
         } else {
           // No user is signed in.
           setUser(null);

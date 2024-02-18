@@ -9,14 +9,14 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const HomePage = () => {
+const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         // User is signed in.
-        navigate("/home");
+        navigate("/dashboard");
       } else {
         // No user is signed in.
         navigate("/");
@@ -40,4 +40,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Dashboard;

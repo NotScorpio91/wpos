@@ -7,6 +7,7 @@ import { db, storage } from "../config/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
 import { auth } from '../config/firebase';
+import Navbar from "../components/Navbar";
 
 
 
@@ -95,7 +96,7 @@ const CardForm = () => {
       } catch (err) {
         console.error(err);
       }
-      navigate("/home");
+      navigate("/dashboard");
     } else {
       setErrorMessage("All fields are required");
       setTimeout(() => {
@@ -116,15 +117,10 @@ const CardForm = () => {
   }, []);
 
   return (
+    <>
+    <Navbar />
     <div className="lg:flex lg:justify-center">
-      <div className=" px-4 mt-12 lg:w-[1200px]">
-        <button
-          onClick={() => navigate("/home")}
-          type="button"
-          className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-        >
-          Back
-        </button>
+      <div className=" px-4 mt-12 lg:w-[1200px]">    
         <h1 className="text-center  my-16 text-5xl text-neutral-100">Wpos</h1>
         {errorMessage && (
           <div
@@ -227,6 +223,7 @@ const CardForm = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

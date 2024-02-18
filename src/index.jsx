@@ -1,6 +1,5 @@
 export { default as Home } from './Home';
-export { default as Login } from './Pages/LoginPage';
-export { default as HomePage } from './Pages/HomePage';
+export { default as Dashboard } from './Pages/Dashboard';
 export { default as CardForm } from './Pages/CardForm';
 export { default as Profile } from './Pages/Profile';
 export { default as NotFoundPage } from './Pages/NotFoundPage';

@@ -1,8 +1,10 @@
 import React from 'react';
-import Button from './components/Button';
+import Login from './components/Login';
 import { auth } from './config/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import bg from './assets/bg.png'
+
 
 
 
@@ -22,16 +24,18 @@ const Home = () => {
 
     return () => unsubscribe();
   }, []);
+
+  const backgroundImageStyle = {
+    backgroundImage: `url(${bg})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    height: '100vh', 
+  };
+
   return (
-    <div className=" mt-14  ">
-      <div className="flex flex-col items-center">
-        <h1 className="text-4xl text-black font-bold mb-8">Wpos</h1>
-        <Button title='Login' link='/login' />
-      </div>
-      <div className="flex items-center justify-center">
-        
-     
-    </div>
+    <div style={backgroundImageStyle} className='flex flex-col justify-center items-center  text-white' >
+      <h1 className='text-center text-6xl font-bold bg-gradient-to-tl from-[#fc4a1a] to-[#f7b733] text-transparent bg-clip-text antialiased pb-40'>Wpos</h1>
+         <Login />
     </div>
   );
 };
