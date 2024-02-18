@@ -8,6 +8,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
 import { auth } from '../config/firebase';
 import Navbar from "../components/Navbar";
+import BottomNavbar from "../components/BottomNavbar";
 
 
 
@@ -119,9 +120,9 @@ const CardForm = () => {
   return (
     <>
     <Navbar />
-    <div className="lg:flex lg:justify-center">
+    <div className="lg:flex lg:justify-center lg:mb-0 mb-16">
       <div className=" px-4 mt-12 lg:w-[1200px]">    
-        <h1 className="text-center  my-16 text-5xl text-neutral-100">Wpos</h1>
+        <h1 className="text-center  my-16 text-5xl text-neutral-100">Form</h1>
         {errorMessage && (
           <div
             className="flex w-fit  items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50  dark:text-blue-400 transition-all sm:absolute sm:top-24"
@@ -223,6 +224,7 @@ const CardForm = () => {
         </div>
       </div>
     </div>
+    <BottomNavbar />
     </>
   );
 };

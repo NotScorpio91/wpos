@@ -15,7 +15,7 @@ const Home = () => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         // User is signed in.
-        navigate("/home");
+        navigate("/dashboard");
       } else {
         // No user is signed in.
         navigate("/");

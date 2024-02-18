@@ -80,8 +80,8 @@ const Tab = () => {
           <MdOutlineWorkOutline
             className={`cursor-pointer  border-white text-white    ${
               activeTab === "sec_cj"
-                ? "text-blue-500 border-blue-500  border-b-2 font-semibold "
-                : ""
+                ? "text-blue-500 border-blue-500   border-b-2 font-semibold "
+                : " text-red-300"
             }`}
           />
           SEC CJ

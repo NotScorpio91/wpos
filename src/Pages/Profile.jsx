@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { signOut } from "firebase/auth";
 import Navbar from '../components/Navbar';
+import BottomNavbar from '../components/BottomNavbar';
 
 
 function Profile() {
@@ -69,7 +70,7 @@ function Profile() {
                 </button>
                 {isDropdownVisible && (
                     
-                <div className="flex-1 justify-end  w-full fixed left-0  bottom-0 z-50 px-2 ">
+                <div className="flex-1 justify-end  w-full fixed left-0  bottom-0 z-50  ">
                     <div className="bg-gray-200 h-60 w-full rounded-t-2xl py-8 px-6 border border-gray-300 shadow">
                         <div className="flex flex-col gap-2 ">
                             <p className="font-bold text-black text-xl">
@@ -103,6 +104,7 @@ function Profile() {
              
         </div>
         </div>
+        <BottomNavbar />
         </>
     )
 }

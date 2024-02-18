@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import { auth } from '../config/firebase';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BottomNavbar from '../components/BottomNavbar';
 
 
 
@@ -36,6 +37,7 @@ const Dashboard = () => {
       </div>
         <Tab />
     </div>
+    <BottomNavbar />
     </>
   );
 };
