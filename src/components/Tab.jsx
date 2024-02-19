@@ -55,7 +55,7 @@ const Tab = () => {
         <div
           className={`w-full rounded-lg py-3 text-sm font-medium leading-5 text-white flex justify-center items-center   gap-1 cursor-pointer  ${activeTab === "ncj"
               ? "bg-[#131415] shadow  outline-none"
-              : "hover:bg-[#131415] hover:text-white"
+              : "hover:bg-[#131415] hover:text-white z-50"
             }`}
           onClick={() => setActiveTab("ncj")}
         >
@@ -66,7 +66,7 @@ const Tab = () => {
         <div
           className={`w-full rounded-lg py-3 text-sm font-medium leading-5 text-white flex justify-center items-center  gap-1  cursor-pointer ${activeTab === "sec_cj"
               ? "bg-[#131415] shadow  outline-none"
-              : "hover:bg-[#131415] hover:text-white"
+              : "hover:bg-[#131415] hover:text-white z-50"
             }`}
           onClick={() => setActiveTab("sec_cj")}
         >

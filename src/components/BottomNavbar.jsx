@@ -27,11 +27,11 @@ function BottomNavbar() {
         
     };
   return (
-    <div className=' lg:hidden bg-gray-500 w-full h-fit fixed bottom-0 flex justify-around'>
+    <div className=' lg:hidden bg-[#0B0B0C] w-full h-fit fixed bottom-0 flex justify-around z-50'>
       
-      <FaHome className={` my-3  ${dashboard ? 'text-red-500' : 'text-black'}  `} size={30} onClick={handleDashboard}/>
-      <SiReacthookform  className={` my-3 ${form ? 'text-red-500' : 'text-black'} `}size={30} onClick={handleForm}/>
-      <CgProfile className={` my-3  ${profile ? 'text-red-500' : 'text-black'} `} size={30} onClick={handleProfile}/>
+      <FaHome className={` my-3  ${dashboard ? 'text-blue-500' : 'text-white'}  `} size={30} onClick={handleDashboard}/>
+      <SiReacthookform  className={` my-3 ${form ? 'text-blue-500' : 'text-white'} `}size={30} onClick={handleForm}/>
+      <CgProfile className={` my-3  ${profile ? 'text-blue-500' : 'text-white'} `} size={30} onClick={handleProfile}/>
      
     </div>
   )

@@ -29,9 +29,21 @@ const Dashboard = () => {
   return (
     <>
     <Navbar />
-    <div className=" mt-14  ">
+    <div>
       <div className="flex flex-col items-center">
-        <h1 className="text-4xl text-black font-bold mb-8">Wpos</h1>
+      <div 
+                aria-hidden="true"
+                className="absolute inset-0 dark:grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20 hidden">
+                <div className="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700"></div>
+                <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
+            </div>
+            <div 
+                aria-hidden="true"
+                className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40  dark:hidden ">
+                <div className="blur-[106px] h-36 bg-gradient-to-t from-gray-500 to-gray-50 "></div>
+                <div className="blur-[106px] h-36 bg-gradient-to-t from-gray-500 to-gray-50 "></div>
+            </div>
+        <h1 className="text-gray-100 font-poppins text-4xl font-bold  text-center antialiased my-10">Dashboard</h1>
   
       </div>
         <Tab />

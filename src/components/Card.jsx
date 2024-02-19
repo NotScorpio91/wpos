@@ -1,8 +1,8 @@
 import React from "react";
-import { CiBookmarkMinus } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { updatePost } from "../redux/slices/cardsSlice";
 import { FaCheckCircle } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 
 const Card = ({ card, onDelete }) => {
 
@@ -13,14 +13,8 @@ const Card = ({ card, onDelete }) => {
   };
   return (
 
-      <div className="md:max-w-sm w-full  h-fit  border border-gray-200 rounded-lg  bg-neutral-50  shadow-2xl shadow-gray-600/10 dark:shadow-none my-5 md:mx-5 ">
-        <CiBookmarkMinus
-          onClick={() => onDelete(card)}
-          className=" md:absolute hidden md:block  mt-2 text-red-700 z-50"
-          size={30}
-        />
-      
-
+      <div className="md:max-w-sm  w-full  h-fit  border border-gray-200 rounded-lg  bg-neutral-50  shadow-2xl shadow-gray-600/10 dark:shadow-none my-5 md:mx-5 z-50 ">
+        
         <img
           className="rounded-t-lg h-[324px] w-full"
           src={card.image}
@@ -28,6 +22,11 @@ const Card = ({ card, onDelete }) => {
         />
 
         <div className="p-5">
+        <MdDeleteForever
+          onClick={() => onDelete(card)}
+          className="  text-red-700 float-right "
+          size={30}
+        />
           <p className=" text-lg text-gray-800 font-medium mb-2">
             {card.title}
           </p>
@@ -45,7 +44,7 @@ const Card = ({ card, onDelete }) => {
             {card.createdDate}
           </p>
           {card.status === 0 ? (
-          <button className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br  shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={handleUpdatePost}>Job Done</button>
+          <button className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={handleUpdatePost}>Job Done</button>
       ) : (
         <FaCheckCircle />
       )}

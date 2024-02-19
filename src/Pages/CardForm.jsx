@@ -6,11 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { db, storage } from "../config/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes } from "firebase/storage";
-import { auth } from '../config/firebase';
+import { auth } from "../config/firebase";
 import Navbar from "../components/Navbar";
 import BottomNavbar from "../components/BottomNavbar";
-
-
 
 const CardForm = () => {
   const dispatch = useDispatch();
@@ -119,112 +117,132 @@ const CardForm = () => {
 
   return (
     <>
-    <Navbar />
-    <div className="lg:flex lg:justify-center lg:mb-0 mb-16">
-      <div className=" px-4 mt-12 lg:w-[1200px]">    
-        <h1 className="text-center  my-16 text-5xl text-neutral-100">Form</h1>
-        {errorMessage && (
-          <div
-            className="flex w-fit  items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50  dark:text-blue-400 transition-all sm:absolute sm:top-24"
-            role="alert"
-          >
-            <svg
-              className="flex-shrink-0 inline w-4 h-4 me-3"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 20 20"
+      <Navbar />
+      <div 
+                aria-hidden="true"
+                className="absolute inset-0 dark:grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20 hidden">
+                <div className="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700"></div>
+                <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
+            </div>
+            <div 
+                aria-hidden="true"
+                className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40  dark:hidden ">
+                <div className="blur-[106px] h-36 bg-gradient-to-t from-gray-500 to-gray-50 "></div>
+                <div className="blur-[106px] h-36 bg-gradient-to-t from-gray-500 to-gray-50 "></div>
+            </div>
+      <div className="lg:flex lg:justify-center lg:mb-0 mb-16 font-roboto antialiased">
+        <div className=" px-4 mt-12 lg:w-[1200px] ">
+          <h1 className="text-gray-100 font-poppins text-4xl font-bold  text-center antialiased my-10">Form</h1>
+          {errorMessage && (
+            <div
+              className="flex w-fit  items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50  dark:text-blue-400 transition-all sm:absolute sm:top-24"
+              role="alert"
             >
-              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-            </svg>
-            <span className="sr-only">Info</span>
-            <div>
-              <span className="font-medium">Info alert!</span> {errorMessage}
+              <svg
+                className="flex-shrink-0 inline w-4 h-4 me-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+              </svg>
+              <span className="sr-only">Info</span>
+              <div>
+                <span className="font-medium">Info alert!</span> {errorMessage}
+              </div>
+            </div>
+          )}
+
+          <div className="mb-4 flex flex-col gap-5 lg:grid lg:grid-cols-2">
+            <div className="z-50">
+              <label className="block text-white mb-1">Title</label>
+              <input
+                type="text"
+                name="title"
+                value={formData.title}
+                onChange={handleInputChange}
+                required
+                className="text-sm rounded-[5px]  block w-full  py-3 px-[14px] shadow-sm bg-[#0A0A0A]  text-white  placeholder-[#9E9E9E] outline-none focus:outline-none focus:border-blue-500 focus:border focus:border-1 "
+                placeholder="Title..."
+              />
+            </div>
+            <div className="z-50">
+              <label className="block text-white mb-1">Client Name</label>
+              <input
+                type="text"
+                name="clientName"
+                value={formData.clientName}
+                onChange={handleInputChange}
+                required
+                className="text-sm rounded-[5px]  block w-full  py-3 px-[14px] shadow-sm bg-[#0A0A0A]  text-white  placeholder-[#9E9E9E] outline-none focus:outline-none focus:border-blue-500 focus:border focus:border-1 "
+                placeholder="Client name..."
+              />
+            </div>
+
+            <div className="z-50">
+              <label className="block text-white mb-1">Description</label>
+              <input
+                type="text"
+                name="description"
+                value={formData.description}
+                onChange={handleInputChange}
+                required
+                className="text-sm rounded-[5px]  block w-full  py-3 px-[14px] shadow-sm bg-[#0A0A0A]  text-white  placeholder-[#9E9E9E] outline-none focus:outline-none focus:border-blue-500 focus:border focus:border-1 "
+                placeholder="Description..."
+              />
+            </div>
+            <div className="z-50">
+              <label className="block text-white mb-1">Price</label>
+              <input
+                type="number"
+                name="price"
+                value={formData.price}
+                onChange={handleInputChange}
+                required
+                className="text-sm rounded-[5px]  block w-full  py-3 px-[14px] shadow-sm bg-[#0A0A0A]  text-white  placeholder-[#9E9E9E] outline-none focus:outline-none focus:border-blue-500 focus:border focus:border-1 "
+                placeholder="Price..."
+              />
+            </div>
+            <div className="z-50">
+              <label className="block text-white mb-1">Due Date</label>
+              <input
+                type="date"
+                name="dueDate"
+                value={formData.dueDate}
+                onChange={handleInputChange}
+                required
+                className="text-sm rounded-[5px]  block w-full  py-3 px-[14px] shadow-sm bg-[#0A0A0A]  text-white  placeholder-[#9E9E9E] outline-none focus:outline-none focus:border-blue-500 focus:border focus:border-1 "
+              />
+            </div>
+            <div className="z-50">
+              <label className="block text-white mb-1">Image</label>
+              <input
+                type="file"
+                onChange={handleFileChange}
+                required
+                className=" text-sm rounded-[5px]  block w-full  py-[10px] px-[14px] bg-[#0A0A0A] text-white outline-none focus:outline-none focus:border-blue-500 focus:border focus:border-1 
+                                            
+
+                 file:text-white file:bg-black font-medium file:rounded-md file:sm:text-sm file:text-xs    file:antialiased file:px-[30px] file:py-2 transition-all file:dark:text-white file:dark:bg-gradient-to-r file:from-blue-500
+                 file:via-blue-600 file:to-blue-700 file:cursor-pointer file:border-none file:mr-2 sm:file:mr-3 "
+              />
             </div>
           </div>
-        )}
-
-        <div className="mb-4 flex flex-col gap-5 lg:grid lg:grid-cols-2">
-          <div className="">
-            <label className="block text-white mb-1">Title</label>
-            <input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleInputChange}
-              required
-              className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
-            />
-          </div>
-          <div className="">
-            <label className="block text-white mb-1">Client Name</label>
-            <input
-              type="text"
-              name="clientName"
-              value={formData.clientName}
-              onChange={handleInputChange}
-              required
-              className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
-            />
-          </div>
-
-          <div className="">
-            <label className="block text-white mb-1">Description</label>
-            <input
-              type="text"
-              name="description"
-              value={formData.description}
-              onChange={handleInputChange}
-              required
-              className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
-            />
-          </div>
-          <div className="">
-            <label className="block text-white mb-1">Price</label>
-            <input
-              type="number"
-              name="price"
-              value={formData.price}
-              onChange={handleInputChange}
-              required
-              className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
-            />
-          </div>
-          <div className="">
-            <label className="block text-white mb-1">Due Date</label>
-            <input
-              type="date"
-              name="dueDate"
-              value={formData.dueDate}
-              onChange={handleInputChange}
-              required
-              className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
-            />
-          </div>
-          <div className="">
-            <label className="block text-white mb-1">Image</label>
-            <input
-              type="file"
-              onChange={handleFileChange}
-              required
-              className="w-full border rounded-md py-1 px-2 focus:outline-none focus:border-blue-500"
-            />
-          </div>
-        </div>
-        <div className="flex justify-between md:justify-start pt-2 pb-5 ">
-          <div className="">
-            <button
-              onClick={handleSubmit}
-              type="button"
-              className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br    shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
-            >
-              Add Card
-            </button>
+          <div className="flex justify-between md:justify-start pt-2 pb-5 ">
+            <div className="z-50">
+              <button
+                onClick={handleSubmit}
+                type="button"
+                className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br  font-roboto font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
+              >
+                Add Card
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <BottomNavbar />
+      <BottomNavbar />
     </>
   );
 };
